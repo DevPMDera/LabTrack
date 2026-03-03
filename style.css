@@ -434,7 +434,7 @@ body {
     position: fixed;
     bottom: 30px;
     right: 20px;
-    font-size: 15px;
+    font-size: 14px;
     text-align: center;
   } 
   
@@ -448,7 +448,7 @@ body {
     background: red;
     color: white;
     border-radius: 30px;
-    position: absolute;
+    position: fixed;
     padding: 5px;
     top: 110px;
     right: 60px;
@@ -504,6 +504,7 @@ body {
   }
 
 }
+
 
 
 
