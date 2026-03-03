@@ -24,26 +24,32 @@
     
     <div class="overview-container">
     <div class="overview-text">Overview</div>
+      
+      <div class="mobile-top-slider" id="mobileSlider">
 
     <!-- Summary Metrics -->
     <section class="summary-metrics">
       <div class="metric overdue"><span id="overdueCount" class="metric-count overdue-count">4</span> Overdue Tests</div>
       <div class="metric due-soon"><span id="dueSoonCount" class="metric-count due-soon-count">3</span> Due in &lt; 30 min</div>
-      <div class="metric validation"><span id="validationCount" class="metric-count validation-count">5</span> Waiting Validation</div>
+      <div class="metric validation"><span id="validationCount" class="metric-count validation-count">5</span> Awaiting Validation</div>
       <div class="metric completed"><span id="completedCount" class="metric-count completed-count">15</span> Completed Today</div>
     </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
+    
       
       <!-- Action Required Panel -->
       <section class="action-required">
         <div class="action-required-header">Action Required Now</div>
-        <div class="alert overdue">A12 | FBC | Overdue 40 min</div>
+        <div class="alert overdue">A12 | FBC | Overdue 40 min</div> 
         <div class="alert warning">A15 | CHEM | 8 min left</div>
         <div class="alert warning">A17 | CBC | 25 min left</div>
       </section>
-
+      
+      </div>
+      
+     <!-- Main Content -->
+    <main class="main-content">
+      
       <!-- Active Tests Kanban Board -->
       <section class="active-tests">
         
