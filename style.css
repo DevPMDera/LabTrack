@@ -452,6 +452,11 @@ body {
     text-align: center;
   }
 
+  .modal-box-header{
+    flex-direction: row;
+    gap: 80%;
+  }
+   
   /* Modal Improvements */
   .modal-box,
   .modal-content {
@@ -501,6 +506,7 @@ body {
   }
 
 }
+
 
 
 
