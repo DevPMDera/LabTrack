@@ -6,7 +6,7 @@ const TESTS = {
   "FBC": {
     tat: 45,
     sop: [
-      { stage: "Collect Sample (EDTA)", duration: 1 },
+      { stage: "Collect Sample (EDTA)", duration: 3 },
       { stage: "Mix Sample (8–10 inversions)", duration: 1 },
       { stage: "Check Sample (clots/hemolysis)", duration: 2 },
       { stage: "Prepare Analyzer (background check)", duration: 3 },
@@ -430,3 +430,37 @@ function closeSOPModal() {
   clearInterval(activeTimer);
   document.getElementById("sopModal").classList.add("hidden");
 }
+
+
+function initMobileAutoSlide() {
+
+  const slider = document.getElementById("mobileSlider");
+  if (!slider) return;
+  if (window.innerWidth > 768) return;
+
+  let index = 0;
+  const slides = slider.children;
+  const totalSlides = slides.length;
+
+  let autoSlide = setInterval(nextSlide, 2000);
+
+  function nextSlide() {
+    index = (index + 1) % totalSlides;
+
+    slider.scrollTo({
+      left: slider.clientWidth * index,
+      behavior: "smooth"
+    });
+  }
+
+  // Pause when user interacts
+  slider.addEventListener("touchstart", () => {
+    clearInterval(autoSlide);
+  });
+
+  slider.addEventListener("touchend", () => {
+    autoSlide = setInterval(nextSlide, 2000);
+  });
+}
+
+window.addEventListener("load", initMobileAutoSlide);
