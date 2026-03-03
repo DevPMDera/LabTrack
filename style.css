@@ -367,6 +367,7 @@ body {
 
   .search-bar {
     width: 100%;
+    padding: 20px 10px;
   }
 
   /* Summary Metrics */
@@ -385,6 +386,8 @@ body {
   gap: 8px;
   padding: 20px 10px;
   aspect-ratio: 1/1;
+  width: 100%;
+  max-height: 100px;
 }
   
   .metric-count {
@@ -425,8 +428,32 @@ body {
   /* Add Sample Button Fix */
   .add-sample {
     margin-top: 20px;
-    width: 100%;
-    border-radius: 8px;
+    width: 30%;
+    border-radius: 30px;
+    padding: 10px 15px;
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    font-size: 15px;
+    white-space: nowrap;
+    text-align: center;
+  } 
+  
+  #sampleForm{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #closeTestModal{
+    width: 50px;
+    background: red;
+    color: white;
+    border-radius: 30px;
+    position: absolute;
+    padding: 5px;
+    top: 110px;
+    right: 60px;
+    text-align: center;
   }
 
   /* Modal Improvements */
