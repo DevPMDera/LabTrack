@@ -340,6 +340,17 @@ body {
   border-radius: 5px;
 }
 
+.sop-close-button{
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    beckground: red;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+  }
+
 
 
 
