@@ -74,6 +74,7 @@ body {
 .main-content {
   display: flex;
   gap: 20px;
+  margin-top: 10px;
 }
 
 .main-content .action-required{
@@ -506,7 +507,6 @@ body {
   }
 
 }
-
 
 
 
