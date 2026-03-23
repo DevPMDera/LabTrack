@@ -202,6 +202,7 @@ function startCountdown(card, minutes) {
     }
 
     updateMetrics();
+    updateActionRequired();
 
   }, 1000);
 
@@ -225,7 +226,7 @@ const closeTestModalBtn = document.getElementById("closeTestModal");
 const testTATMap = { 
     "FBC": 45,
     "CBC": 40,
-    "PCV": 15,
+    "PCV": 10,
     "ESR": 60,
     "Reticulocyte Count": 90,
     "Peripheral Blood Film": 120,
@@ -293,7 +294,7 @@ const testTATMap = {
     "Anti-dsDNA": 240,
     "ASO Titre": 90,
   
-    "Stool Microscopy": 30,
+    "Stool Microscopy": 1,
     "Urine Microscopy": 20,
     "Occult Blood": 20
   
@@ -464,3 +465,94 @@ function initMobileAutoSlide() {
 }
 
 window.addEventListener("load", initMobileAutoSlide);
+
+
+
+
+const testPriority = {
+
+  // CRITICAL
+  "Troponin": 4,
+  "Electrolytes (Na⁺, K⁺, Cl⁻, HCO₃⁻)": 4,
+  "Crossmatching": 4,
+  "Blood Culture": 4,
+  "PT": 4,
+  "APTT": 4,
+  "INR": 4,
+
+  // HIGH
+  "FBC": 3,
+  "CBC": 3,
+  "Glucose (RBS/FBS)": 3,
+  "Creatinine": 3, 
+  "PCV": 3,
+  "Urea": 3,
+
+  // MEDIUM
+  "LFT": 2,
+  "CRP": 2,
+  "ESR": 2,
+  "Lipid Profile": 2,
+
+  // LOW
+  "Stool Microscopy": 1,
+  "Urine Microscopy": 1,
+  "Occult Blood": 1
+};
+
+function updateActionRequired() {
+
+  const container = document.querySelector(".action-required");
+  const header = container.querySelector(".action-required-header");
+
+  // remove old alerts
+  container.querySelectorAll(".alert").forEach(a => a.remove());
+
+  const cards = document.querySelectorAll(".column.analysis .card");
+
+  let alerts = [];
+
+  cards.forEach(card => {
+
+    if (!card.classList.contains("warning") && !card.classList.contains("overdue")) return;
+
+    const code = card.querySelector(".card-number").textContent;
+    const test = card.querySelector(".card-test").textContent;
+
+    const remaining = parseInt(card.dataset.remaining || 0);
+    const overdue = remaining <= 0;
+
+    const message = overdue
+      ? `${code} | ${test} | Overdue`
+      : `${code} | ${test} | ${Math.floor(remaining/60)} min left`;
+
+    alerts.push({
+      element: message,
+      priority: testPriority[test] || 1
+    });
+
+  });
+
+  // sort by clinical priority
+  alerts.sort((a,b)=> b.priority - a.priority);
+
+  alerts.forEach(alert => {
+
+    const div = document.createElement("div");
+    div.classList.add("alert");
+
+    if(alert.element.includes("Overdue")){
+      div.classList.add("overdue");
+    } else {
+      div.classList.add("warning");
+    }
+
+    div.textContent = alert.element;
+
+    container.appendChild(div);
+
+  });
+
+}
+
+updateActionRequired();
